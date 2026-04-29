@@ -75,19 +75,19 @@ public class AppointmentsController(IAppointmentsService service) : ControllerBa
         try
         {
             await service.UpdateAsync(id, dto, ct);
-            return Ok(new { message = "Wizyta została zaktualizowana" }); // 200
+            return Ok(new { message = "Wizyta została zaktualizowana" }); 
         }
         catch (KeyNotFoundException)
         {
-            return NotFound(new { message = "Wizyta nie istnieje" }); // 404
+            return NotFound(new { message = "Wizyta nie istnieje" }); 
         }
         catch (InvalidOperationException e)
         {
-            return Conflict(new { message = e.Message }); // 409
+            return Conflict(new { message = e.Message }); 
         }
         catch (Exception e)
         {
-            return BadRequest(new { message = e.Message }); // 400
+            return BadRequest(new { message = e.Message }); 
         }
     }
 }
